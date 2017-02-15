@@ -15,6 +15,8 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import objects.Review;
+import objects.CoffeeShop;
+
 
 /**
  *
@@ -106,6 +108,17 @@ public class Model {
         //String sqlInsert="insert into messages ("
         
         
+    }
+            public boolean updateCoffeeShop(CoffeeShop shop) throws SQLException
+    {
+        StringBuilder sqlQuery = new StringBuilder();
+        sqlQuery.append("update coffee shop ");
+        sqlQuery.append("set name='").append(shop.getName()).append("', ");
+        sqlQuery.append("address=").append(shop.getAddress()).append(" ");
+        sqlQuery.append("user rating=").append(shop.getRating()).append(";");
+        Statement st = createStatement();
+        logger.log(Level.INFO, "UPDATE SQL={0}", sqlQuery.toString());
+        return st.execute(sqlQuery.toString());
     }
     
 }
